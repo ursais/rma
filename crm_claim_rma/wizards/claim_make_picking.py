@@ -218,17 +218,21 @@ class ClaimMakePicking(models.TransientModel):
             'type': 'ir.actions.act_window',
         }
 
+    def _prepare_procurement_group_vals(self, claim):
+        return {
+            'name': claim.code,
+            'claim_id': claim.id,
+            'move_type': 'direct',
+        }
+
     def _create_procurement(self, claim):
         """ Create a procurement order for each line in this claim and put
         all procurements in a procurement group linked to this claim.
 
         :type claim: crm_claim
         """
-        group = self.env['procurement.group'].create({
-            'name': claim.code,
-            'claim_id': claim.id,
-            'move_type': 'direct',
-        })
+        group_vals = self._prepare_procurement_group_vals(claim)
+        group = self.env['procurement.group'].create(group_vals)
 
         for line in self.claim_line_ids:
             procurement = self.env['procurement.order'].create({
