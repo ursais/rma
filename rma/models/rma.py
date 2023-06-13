@@ -293,7 +293,9 @@ class Rma(models.Model):
         )
         mapped_data = Counter(map(lambda r: r["rma_id"][0], rma_data))
         for record in self:
-            record.delivery_picking_count = mapped_data.get(record.id, 0)
+            record.delivery_picking_count = \
+                len(record.procurement_group_id.stock_move_ids.mapped('picking_id'))\
+                or len(record.delivery_move_ids.mapped('picking_id'))
 
     @api.depends(
         "delivery_move_ids",
@@ -801,7 +803,8 @@ class Rma(models.Model):
         action = self.env["ir.actions.actions"]._for_xml_id(
             "stock.action_picking_tree_all"
         )
-        picking = self.delivery_move_ids.mapped("picking_id")
+        picking = self.procurement_group_id.stock_move_ids.mapped("picking_id")\
+                  or self.delivery_move_ids.mapped("picking_id")
         if len(picking) > 1:
             action["domain"] = [("id", "in", picking.ids)]
         elif picking:
@@ -958,6 +961,13 @@ class Rma(models.Model):
             ),
             view="stock.view_picking_form",
         )
+        if self.operation_id.name == "Replace":
+            self._action_launch_stock_rule(
+                    fields.Datetime.now(),
+                    self.warehouse_id,
+                    self.product_id,
+                    self.product_uom_qty,
+                    self.product_uom,)
         self._prepare_picking(picking_form)
         picking = picking_form.save()
         picking.action_confirm()
