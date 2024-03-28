@@ -59,8 +59,6 @@ class RmaReSplitWizard(models.TransientModel):
         extracted_rma = self.rma_id.extract_quantity(
             self.product_uom_qty, self.product_uom
         )
-        print("GGGGGGGGGGGG", extracted_rma)
-        
         return {
             "name": _("Extracted RMA"),
             "type": "ir.actions.act_window",
