@@ -113,12 +113,11 @@ publicWidget.registry.PortalRmaSale = publicWidget.Widget.extend({
     },
     _onChangeShippingAddress: function (ev) {
         const $address_container = $(ev.currentTarget.parentElement);
-        $address_container.find("input").removeAttr("checked");
+        $address_container.find("input[type='radio']").prop("checked", false);
         $address_container
             .find(".o_rma_portal_shipping_card")
-            .removeClass("bg-primary")
-            .removeClass("text-primary");
-        $(ev.currentTarget).find("input").attr("checked", "checked");
-        $(ev.currentTarget).addClass("bg-primary").addClass("text-primary");
+            .removeClass("bg-primary text-primary");
+        $(ev.currentTarget).find("input[type='radio']").prop("checked", true);
+        $(ev.currentTarget).addClass("bg-primary text-primary");
     },
 });

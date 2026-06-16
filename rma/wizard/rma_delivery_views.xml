@@ -30,7 +30,8 @@
                                 name="product_uom"
                                 groups="uom.group_uom"
                                 required="rma_count == 1"
-                                domain="[('category_id', '=', uom_category_id)]"
+                                widget="many2one_uom"
+                                options="{'no_open': True, 'no_create': True}"
                             />
                             <field name="product_uom" invisible="1" />
                         </div>

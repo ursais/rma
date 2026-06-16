@@ -100,8 +100,23 @@ class StockWarehouse(models.Model):
             )
         return res
 
+    def _get_rma_picking_type_barcode_defaults(self):
+        """Defaults for optional enterprise extensions (e.g. stock_barcode)."""
+        self.env.cr.execute(
+            """
+            SELECT 1
+            FROM information_schema.columns
+            WHERE table_name = 'stock_picking_type'
+              AND column_name = 'restrict_put_in_pack'
+            """
+        )
+        if not self.env.cr.fetchone():
+            return {}
+        return {"restrict_put_in_pack": "optional"}
+
     def _get_picking_type_create_values(self, max_sequence):
         data, next_sequence = super()._get_picking_type_create_values(max_sequence)
+        barcode_defaults = self._get_rma_picking_type_barcode_defaults()
         customer_loc, supplier_loc = self._get_partner_locations()
         data.update(
             {
@@ -115,6 +130,7 @@ class StockWarehouse(models.Model):
                     "sequence": max_sequence + 1,
                     "sequence_code": "RMA/IN",
                     "company_id": self.company_id.id,
+                    **barcode_defaults,
                 },
                 "rma_out_type_id": {
                     "name": self.env._("RMA Delivery Orders"),
@@ -126,6 +142,7 @@ class StockWarehouse(models.Model):
                     "sequence": max_sequence + 2,
                     "sequence_code": "RMA/OUT",
                     "company_id": self.company_id.id,
+                    **barcode_defaults,
                 },
             }
         )

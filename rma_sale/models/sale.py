@@ -112,7 +112,7 @@ class SaleOrderLine(models.Model):
             lambda r: (
                 self == r.sale_line_id
                 and r.state == "done"
-                and not r.scrapped
+                and r.location_dest_usage != "inventory"
                 and r._is_outgoing()
                 and (
                     not r.origin_returned_move_id

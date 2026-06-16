@@ -75,7 +75,7 @@ class SaleOrderLine(models.Model):
         return self.move_ids.filtered(
             lambda m: (
                 m.state == "done"
-                and not m.scrapped
+                and m.location_dest_usage != "inventory"
                 and m.location_dest_id.usage == "customer"
                 and (
                     not m.origin_returned_move_id

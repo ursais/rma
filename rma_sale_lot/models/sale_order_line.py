@@ -16,7 +16,7 @@ class SaleOrderLine(models.Model):
             [
                 ("move_id", "in", moves.ids),
                 ("state", "=", "done"),
-                ("move_id.scrapped", "=", False),
+                ("move_id.location_dest_usage", "!=", "inventory"),
             ],
             ["quantity:sum"],
             ["product_id", "lot_id"],
@@ -30,7 +30,7 @@ class SaleOrderLine(models.Model):
 
     def prepare_sale_rma_data(self):
         self.ensure_one()
-        if self.product_id.type not in ["product", "consu"]:
+        if self.product_id.type != "consu" or not self.product_id.is_storable:
             return {}
         if not self.product_id.tracking or self.product_id.tracking == "none":
             return super().prepare_sale_rma_data()

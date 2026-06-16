@@ -507,7 +507,7 @@ class TestRmaSale(TestRmaSaleBase):
         self.assertEqual(
             rma1.reception_move_id.picking_id, rma2.reception_move_id.picking_id
         )
-        self.assertFalse(rma1.procurement_group_id.sale_id)
+        self.assertFalse(rma1.stock_reference_id.sale_ids)
 
     def test_reception_grouped_from_same_sale_order(self):
         """
@@ -549,4 +549,4 @@ class TestRmaSale(TestRmaSaleBase):
         self.assertEqual(
             rma1.reception_move_id.picking_id, rma2.reception_move_id.picking_id
         )
-        self.assertEqual(rma1.procurement_group_id.sale_id, sale_order)
+        self.assertEqual(rma1.stock_reference_id.sale_ids, sale_order)

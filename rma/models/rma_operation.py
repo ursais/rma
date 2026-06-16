@@ -66,9 +66,10 @@ class RmaOperation(models.Model):
         help="If enabled, RMAs using this operation will NOT be grouped into a "
         "single delivery picking, even if the company setting allows grouping.",
     )
-    _sql_constraints = [
-        ("name_uniq", "unique (name)", "That operation name already exists !"),
-    ]
+    _name_uniq = models.Constraint(
+        "unique (name)",
+        "That operation name already exists !",
+    )
 
     @api.model
     def _get_rma_draft_domain(self):

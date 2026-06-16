@@ -43,7 +43,7 @@ class Rma(models.Model):
     )
     product_id = fields.Many2one(
         domain="order_id and [('id', 'in', allowed_product_ids)] or "
-        "[('type', 'in', ['consu', 'product'])]"
+        "[('type', '=', 'consu'), ('is_storable', '=', True)]"
     )
     # Add index to this field, as we perform a search on it
     refund_id = fields.Many2one(index=True)
@@ -80,7 +80,7 @@ class Rma(models.Model):
             if rec.order_id:
                 order_product = rec.order_id.order_line.mapped("product_id")
                 rec.allowed_product_ids = order_product.filtered(
-                    lambda r: r.type in ["consu", "product"]
+                    lambda r: r.is_storable
                 ).ids
             else:
                 rec.allowed_product_ids = False  # don't populate a big list
@@ -202,7 +202,7 @@ class Rma(models.Model):
             not self.env.context.get("ignore_rma_sale_order")
             and len(self.order_id) == 1
         ):
-            vals["sale_id"] = self.order_id.id
+            vals["sale_ids"] = [(4, self.order_id.id)]
         return vals
 
     def _prepare_delivery_procurements(self, scheduled_date=None, qty=None, uom=None):
@@ -235,9 +235,9 @@ class Rma(models.Model):
             vals["sale_line_id"] = move.sale_line_id.id
         return vals
 
-    def _prepare_reception_procurement_vals(self, group=None):
+    def _prepare_reception_procurement_vals(self, reference=None):
         """This method is used only for reception and a specific RMA IN route."""
-        vals = super()._prepare_reception_procurement_vals(group=group)
+        vals = super()._prepare_reception_procurement_vals(reference=reference)
         move = self.sudo().move_id
         if (
             move
@@ -248,10 +248,9 @@ class Rma(models.Model):
         return vals
 
     def create_replace(self, scheduled_date, warehouse, product, qty, uom):
-        # When the procurement group has the sale id set it will propagate to the
-        # pickings. This is inconvenient for this operation as when we confirm the
-        # customer delivery a new order line will be created with the replaced option
-        # which will be set for invoicing.
+        # When the stock reference links the sale order it propagates to pickings.
+        # This is inconvenient for replace as confirming the delivery would create
+        # a new order line for invoicing.
         moves_before = self.sudo().delivery_move_ids
         res = super().create_replace(scheduled_date, warehouse, product, qty, uom)
         new_moves = self.sudo().delivery_move_ids - moves_before

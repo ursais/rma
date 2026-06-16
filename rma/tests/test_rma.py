@@ -269,9 +269,8 @@ class TestRmaCase(TestRma):
         uom_ten = self.env["uom.uom"].create(
             {
                 "name": "Ten",
-                "category_id": self.env.ref("uom.product_uom_unit").id,
-                "factor_inv": 10,
-                "uom_type": "bigger",
+                "relative_factor": 10,
+                "relative_uom_id": self.env.ref("uom.product_uom_unit").id,
             }
         )
         product_2 = self.product_product.create(
@@ -1085,10 +1084,10 @@ class TestRmaCase(TestRma):
         partner = self.res_partner.create({"name": "Partner 2 test"})
         rma3 = self._create_rma(partner, self.product, 10, self.rma_loc)
         (rma1 | rma2 | rma3).action_confirm()
-        self.assertTrue(rma1.procurement_group_id)
-        self.assertTrue(rma3.procurement_group_id)
-        self.assertEqual(rma1.procurement_group_id, rma1.procurement_group_id)
-        self.assertNotEqual(rma1.procurement_group_id, rma3.procurement_group_id)
+        self.assertTrue(rma1.stock_reference_id)
+        self.assertTrue(rma3.stock_reference_id)
+        self.assertEqual(rma1.stock_reference_id, rma2.stock_reference_id)
+        self.assertNotEqual(rma1.stock_reference_id, rma3.stock_reference_id)
         self.assertEqual(len((rma1 | rma2).reception_move_id.picking_id), 1)
         self.assertEqual(len((rma1 | rma2 | rma3).reception_move_id.picking_id), 2)
 

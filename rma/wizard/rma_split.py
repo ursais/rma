@@ -24,21 +24,21 @@ class RmaReSplitWizard(models.TransientModel):
         required=True,
     )
 
-    _sql_constraints = [
-        (
-            "check_product_uom_qty_positive",
-            "CHECK(product_uom_qty > 0)",
-            "Quantity must be greater than 0.",
-        ),
-    ]
+    _check_product_uom_qty_positive = models.Constraint(
+        "CHECK(product_uom_qty > 0)",
+        "Quantity must be greater than 0.",
+    )
 
     @api.model
     def fields_get(self, allfields=None, attributes=None):
         res = super().fields_get(allfields, attributes=attributes)
         rma_id = self.env.context.get("active_id")
         rma = self.env["rma"].browse(rma_id)
+        root_uom = rma.product_uom
+        while root_uom.relative_uom_id:
+            root_uom = root_uom.relative_uom_id
         res["product_uom"]["domain"] = [
-            ("category_id", "=", rma.product_uom.category_id.id)
+            ("parent_path", "=like", f"{root_uom.parent_path}%")
         ]
         return res
 
@@ -62,7 +62,6 @@ class RmaReSplitWizard(models.TransientModel):
         return {
             "name": self.env._("Extracted RMA"),
             "type": "ir.actions.act_window",
-            "view_type": "form",
             "view_mode": "form",
             "res_model": "rma",
             "views": [(self.env.ref("rma.rma_view_form").id, "form")],

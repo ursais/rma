@@ -130,10 +130,6 @@ class SaleOrderLineRmaWizard(models.TransientModel):
         required=True,
         domain="[('id', 'in', allowed_product_ids)]",
     )
-    uom_category_id = fields.Many2one(
-        comodel_name="uom.category",
-        related="product_id.uom_id.category_id",
-    )
     quantity = fields.Float(
         digits="Product Unit of Measure",
         required=True,
@@ -145,7 +141,6 @@ class SaleOrderLineRmaWizard(models.TransientModel):
     uom_id = fields.Many2one(
         comodel_name="uom.uom",
         string="Unit of Measure",
-        domain="[('category_id', '=', uom_category_id)]",
         required=True,
     )
     allowed_picking_ids = fields.Many2many(
