@@ -1555,16 +1555,16 @@ class Rma(models.Model):
         self_with_context = self.with_context(mail_post_autofollow=True)
         return super(Rma, self_with_context).message_post(**kwargs)
 
-    def _message_get_suggested_recipients(self):
-        recipients = super()._message_get_suggested_recipients()
+    def _message_add_suggested_recipients(self, force_primary_email=False):
+        suggested = super()._message_add_suggested_recipients(
+            force_primary_email=force_primary_email
+        )
         try:
             for record in self.filtered("partner_id"):
-                record._message_add_suggested_recipient(
-                    recipients, partner=record.partner_id, reason=self.env._("Customer")
-                )
-        except AccessError as e:  # no read access rights
-            _logger.debug(e)
-        return recipients
+                suggested[record.id]["partners"] |= record.partner_id
+        except AccessError as error:  # no read access rights
+            _logger.debug(error)
+        return suggested
 
     # Reporting business methods
     def _get_report_base_filename(self):
