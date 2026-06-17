@@ -245,7 +245,7 @@ class TestRmaSale(TestRmaSaleBase):
         self.assertEqual(rma.move_id, self.order_out_picking.move_ids)
         self.assertEqual(rma.product_id, self.product_1)
         self.assertEqual(rma.product_uom_qty, self.order_line.product_uom_qty)
-        self.assertEqual(rma.product_uom, self.order_line.product_uom)
+        self.assertEqual(rma.product_uom, self.order_line.product_uom_id)
         self.assertEqual(rma.state, "confirmed")
         self.assertEqual(
             rma.reception_move_id.origin_returned_move_id,
@@ -296,7 +296,7 @@ class TestRmaSale(TestRmaSaleBase):
         self.assertEqual(rma.move_id, self.order_out_picking.move_ids)
         self.assertEqual(rma.product_id, self.product_1)
         self.assertEqual(rma.product_uom_qty, self.order_line.product_uom_qty)
-        self.assertEqual(rma.product_uom, self.order_line.product_uom)
+        self.assertEqual(rma.product_uom, self.order_line.product_uom_id)
         self.assertEqual(rma.state, "confirmed")
         self.assertEqual(
             rma.reception_move_id.origin_returned_move_id,
@@ -333,7 +333,7 @@ class TestRmaSale(TestRmaSaleBase):
                     "sale_line_id": order.order_line.id,
                     "quantity": order.order_line.product_uom_qty,
                     "allowed_quantity": order.order_line.qty_delivered,
-                    "uom_id": order.order_line.product_uom.id,
+                    "uom_id": order.order_line.product_uom_id.id,
                     "picking_id": order.picking_ids[0].id,
                     "operation_id": self.operation.id,
                 },

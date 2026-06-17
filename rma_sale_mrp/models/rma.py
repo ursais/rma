@@ -24,7 +24,7 @@ class Rma(models.Model):
     def _get_refund_line_quantity(self):
         """Refund the kit, not the component"""
         if self.phantom_bom_product:
-            uom = self.sale_line_id.product_uom or self.phantom_bom_product.uom_id
+            uom = self.sale_line_id.product_uom_id or self.phantom_bom_product.uom_id
             return (self.kit_qty, uom)
         return (self.product_uom_qty, self.product_uom)
 

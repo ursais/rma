@@ -6,7 +6,7 @@
 {
     "name": "Return Merchandise Authorization Management - Link with Sales",
     "summary": "Sale Order - Return Merchandise Authorization (RMA)",
-    "version": "19.0.2.3.1",
+    "version": "19.0.2.3.2",
     "development_status": "Production/Stable",
     "category": "RMA",
     "website": "https://github.com/OCA/rma",

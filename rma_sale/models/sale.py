@@ -176,7 +176,7 @@ class SaleOrderLine(models.Model):
                 {
                     "product": product,
                     "quantity": self.qty_delivered,
-                    "uom": self.product_uom,
+                    "uom": self.product_uom_id,
                     "picking": False,
                     "sale_line_id": self,
                 }
