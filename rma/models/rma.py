@@ -692,6 +692,7 @@ class Rma(models.Model):
                 # RMA to that new invoice line.
                 invoice_form = Form(refund)
                 with invoice_form.invoice_line_ids.new() as line_form:
+                    line_form._values.update({"business_line_id": rma.business_line_id.id})
                     rma._prepare_refund_line(line_form)
                 refund = invoice_form.save()
                 line = refund.invoice_line_ids.filtered(lambda r: not r.rma_id)
