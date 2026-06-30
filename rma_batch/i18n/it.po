@@ -1,0 +1,409 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rma_batch
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-02-17 09:09+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_needaction
+msgid "Action Needed"
+msgstr "Azione richiesta"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_ids
+msgid "Activities"
+msgstr "Attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decorazione eccezione attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_state
+msgid "Activity State"
+msgstr "Stato attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icona tipo attività"
+
+#. module: rma_batch
+#. odoo-python
+#: code:addons/rma_batch/models/rma.py:0
+msgid "All RMAs in a batch must belong to the same partner"
+msgstr "Tutte le RMA di un lotto devono appartenere allo stesso partner"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteggio allegati"
+
+#. module: rma_batch
+#: model:ir.actions.act_window,name:rma_batch.rma_batch_act_window
+#: model:ir.ui.menu,name:rma_batch.rma_batch_menu
+msgid "Batches"
+msgstr "Lotti"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: rma_batch
+#: model:ir.model.fields.selection,name:rma_batch.selection__rma_batch__state__cancelled
+msgid "Cancelled"
+msgstr "Annullata"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__company_id
+msgid "Company"
+msgstr "Azienda"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Confirm"
+msgstr "Conferma"
+
+#. module: rma_batch
+#: model:ir.model.fields.selection,name:rma_batch.selection__rma_batch__state__confirmed
+msgid "Confirmed"
+msgstr "Confermata"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__count_rma
+msgid "Count Rma"
+msgstr "Conteggio RMA"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma__partner_id
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__date
+msgid "Date"
+msgstr "Data"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__location_id
+msgid "Default RMA location that will be propagated to RMA order lines"
+msgstr ""
+"Ubicazione predefinita RMA che verrà propagata alle altre righe dell'RMA"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: rma_batch
+#: model:ir.model.fields.selection,name:rma_batch.selection__rma_batch__state__draft
+msgid "Draft"
+msgstr "Bozza"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_follower_ids
+msgid "Followers"
+msgstr "Seguito da"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguito da (partner)"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icona Font Awesome es. fa-tasks"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__has_message
+msgid "Has Message"
+msgstr "Ha un messaggio"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__id
+msgid "ID"
+msgstr "ID"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_exception_icon
+msgid "Icon"
+msgstr "Icona"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icona per indicare un'attività eccezione."
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__partner_invoice_id
+msgid "Invoice Address"
+msgstr "Indirizzo di fatturazione"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_is_follower
+msgid "Is Follower"
+msgstr "Segue"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__location_id
+msgid "Location"
+msgstr "Ubicazione"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Mark as Ready"
+msgstr "Segna come pronta"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_has_error
+msgid "Message Delivery error"
+msgstr "Errore di consegna messaggio"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_ids
+msgid "Messages"
+msgstr "Messaggi"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Scadenza mia attività"
+
+#. module: rma_batch
+#. odoo-python
+#: code:addons/rma_batch/models/rma_batch.py:0
+msgid "New"
+msgstr "Nuova"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Scadenza prossima attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_summary
+msgid "Next Activity Summary"
+msgstr "Riepilogo prossima attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_type_id
+msgid "Next Activity Type"
+msgstr "Tipo prossima attività"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Numero di azioni"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__message_has_error_counter
+msgid "Number of errors"
+msgstr "Numero di errori"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Numero di messaggi che richiedono un'azione"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Numero di messaggi con errore di consegna"
+
+#. module: rma_batch
+#. odoo-python
+#: code:addons/rma_batch/models/rma_batch.py:0
+#: model:ir.model,name:rma_batch.model_rma
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__rma_ids
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "RMA"
+msgstr "RMA"
+
+#. module: rma_batch
+#: model:ir.model,name:rma_batch.model_rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma__batch_id
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "RMA Batch"
+msgstr "Lotto RMA"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__team_id
+msgid "RMA team"
+msgstr "Team RMA"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "RMA(s)"
+msgstr "RMA"
+
+#. module: rma_batch
+#: model:ir.model.fields.selection,name:rma_batch.selection__rma_batch__state__ready
+msgid "Ready"
+msgstr "Pronta"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__name
+msgid "Reference"
+msgstr "Riferimento"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__partner_invoice_id
+msgid "Refund address for current RMA."
+msgstr "Indirizzo di rimborso per questa RMA."
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__state
+msgid ""
+"Represents the preparation and validation progress of the RMA batch:\n"
+"- Draft: The batch is being prepared. RMAs can still be added or edited.\n"
+"- Ready: All required information for the batch and its RMAs is complete. The batch is ready to be confirmed.\n"
+"- Confirmed: The batch has been validated and all linked RMAs are confirmed.\n"
+"- Cancelled: The batch and its related RMAs are cancelled or ignored."
+msgstr ""
+"Rappresenta l'avanzamento della preparazione e della convalida del lotto "
+"RMA:\n"
+"- Bozza: il lotto è in fase di preparazione. È ancora possibile aggiungere o "
+"modificare RMA.\n"
+"- Pronto: tutte le informazioni richieste per il lotto e le relative RMA "
+"sono complete. Il lotto è pronto per essere confermato.\n"
+"- Confermato: il lotto è stato convalidato e tutte le RMA collegate sono "
+"state confermate.\n"
+"- Annullato: il lotto e le relative RMA sono annullati o ignorati."
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma__operation_id
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__operation_id
+msgid "Requested operation"
+msgstr "Operazione richiesta"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma__user_id
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__user_id
+msgid "Responsible"
+msgstr "Responsabile"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__activity_user_id
+msgid "Responsible User"
+msgstr "Utente responsabile"
+
+#. module: rma_batch
+#: model:ir.model,name:rma_batch.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Prelievo di reso"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Set to Draft"
+msgstr "Imposta a bozza"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__partner_shipping_id
+msgid "Shipping Address"
+msgstr "Indirizzo di spedizione"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__partner_shipping_id
+msgid "Shipping address for current RMA."
+msgstr "Indirizzo di spedizione per questa RMA."
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Show RMA"
+msgstr "Visualizza RMA"
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__state
+msgid "Status"
+msgstr "Stato"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Stato in base alle attività\n"
+"Scaduto: la data richiesta è trascorsa\n"
+"Oggi: la data attività è oggi\n"
+"Pianificato: attività future."
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma__tag_ids
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__tag_ids
+msgid "Tags"
+msgstr "Etichette"
+
+#. module: rma_batch
+#: model_terms:ir.ui.view,arch_db:rma_batch.rma_batch_form_view
+msgid "Tags..."
+msgstr "Etichette..."
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo di attività eccezione sul record."
+
+#. module: rma_batch
+#: model:ir.model.fields,field_description:rma_batch.field_rma_batch__website_message_ids
+msgid "Website Messages"
+msgstr "Messaggi sito web"
+
+#. module: rma_batch
+#: model:ir.model.fields,help:rma_batch.field_rma_batch__website_message_ids
+msgid "Website communication history"
+msgstr "Cronologia comunicazioni sito web"
+
+#. module: rma_batch
+#. odoo-python
+#: code:addons/rma_batch/models/rma_batch.py:0
+msgid "You cannot delete RMAs that are not in draft state"
+msgstr "Non puoi eliminare RMA che non sono in stato \"bozza\""
