@@ -39,7 +39,7 @@ class RMARepairOrderTest(TestRma):
             "default_product_id": self.rma.product_id.id,
             "default_location_id": self.rma.location_id.id,
             "default_partner_id": self.rma.partner_id.id,
-            "default_product_qty": self.rma.product_uom_qty,
+            "default_repair_product_qty": self.rma.product_uom_qty,
             "default_product_uom": self.rma.product_uom.id,
             "default_address_id": self.rma.partner_shipping_id.id,
             "default_partner_invoice_id": self.rma.partner_invoice_id.id,

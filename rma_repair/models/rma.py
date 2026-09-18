@@ -59,12 +59,14 @@ class RMA(models.Model):
 
     def _get_repair_order_default_vals(self):
         self.ensure_one()
+        # Use default_repair_product_qty (not default_product_qty) so the qty
+        # does not leak into stock.move.create via context during End Repair.
         return {
             "default_rma_ids": [self.id],
             "default_product_id": self.product_id.id,
             "default_location_id": self.location_id.id,
             "default_partner_id": self.partner_id.id,
-            "default_product_qty": self.product_uom_qty,
+            "default_repair_product_qty": self.product_uom_qty,
             "default_product_uom": self.product_uom.id,
             "default_address_id": self.partner_shipping_id.id,
             "default_partner_invoice_id": self.partner_invoice_id.id,
@@ -98,10 +100,12 @@ class RMA(models.Model):
         self.ensure_one()
         if self.repair_id:
             return self.repair_id
+        ctx = self._get_repair_order_default_vals()
+        product_qty = ctx.pop("default_repair_product_qty", self.product_uom_qty)
         return (
             self.env["repair.order"]
-            .with_context(**self._get_repair_order_default_vals())
-            .create({})
+            .with_context(**ctx)
+            .create({"product_qty": product_qty})
         )
 
     def action_confirm(self):
