@@ -1,4 +1,4 @@
 id,name,model_id,group_id/id,operation,domain
-access_return_instruction_user,return.instruction.user,model_return_instruction,base.group_user,r,
-access_return_instruction_manager,return.instruction.manager,model_return_instruction,sales_team.group_sale_manager,crud,
-access_return_instruction_salesman,return.instruction.salesman,model_return_instruction,sales_team.group_sale_salesman,crud,
+access_return_instruction_user,return.instruction.user,return.instruction,base.group_user,r,
+access_return_instruction_manager,return.instruction.manager,return.instruction,sales_team.group_sale_manager,crud,
+access_return_instruction_salesman,return.instruction.salesman,return.instruction,sales_team.group_sale_salesman,crud,
