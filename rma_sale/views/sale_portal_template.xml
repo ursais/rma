@@ -299,9 +299,7 @@
             <div id="sale_rma_request_top_hook" />
             <div id="request_form">
                 <div class="row">
-                    <t t-call="rma_sale.sale_rma_request_form">
-                        <t t-set="single_page_mode" t-value="True" />
-                    </t>
+                    <t t-call="rma_sale.sale_rma_request_form" single_page_mode="True"/>
                 </div>
             </div>
             <div id="sale_rma_request_bottom_hook" />

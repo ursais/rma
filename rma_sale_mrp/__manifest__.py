@@ -4,7 +4,7 @@
 {
     "name": "Return Merchandise Authorization Management - Link with MRP Kits",
     "summary": "Allow doing RMAs from MRP kits",
-    "version": "19.0.1.1.0",
+    "version": "20.0.1.1.0",
     "development_status": "Beta",
     "category": "RMA",
     "website": "https://github.com/OCA/rma",
@@ -13,15 +13,13 @@
     "license": "AGPL-3",
     "depends": ["rma_sale", "mrp"],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/sale_order_portal_template.xml",
         "views/rma_views.xml",
         "views/report_rma.xml",
-        "wizard/sale_order_rma_wizard_views.xml",
-    ],
+        "wizard/sale_order_rma_wizard_views.xml"],
     "assets": {
         "web.assets_tests": [
-            "/rma_sale_mrp/static/src/tests/*.js",
-        ],
+            "/rma_sale_mrp/static/src/tests/*.js"],
     },
 }

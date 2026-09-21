@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+access_sale_order_line_rma_wizard_component_user_all,sale.order.line.rma.wizard.component.user.all,model_sale_order_line_rma_wizard_component,rma.rma_group_user_all,crud,

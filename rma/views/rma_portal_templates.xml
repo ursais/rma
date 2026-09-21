@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2020 Tecnativa - Ernesto Tejeda
-     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template
         id="portal_my_home_menu_rma"
@@ -17,7 +15,7 @@
                 <t t-else="">RMA Orders</t>
             </li>
             <li t-if="rma" class="breadcrumb-item active">
-                <t t-esc="rma.name" />
+                <t t-out="rma.name" />
             </li>
         </xpath>
     </template>
@@ -28,19 +26,15 @@
         priority="30"
     >
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
-            <t t-call="portal.portal_docs_entry">
-                <t t-set="title">RMA Orders</t>
-                <t t-set="url" t-value="'/my/rmas'" />
-                <t t-set="placeholder_count" t-value="'rma_count'" />
-            </t>
+            <t t-call="portal.portal_docs_entry"
+                title.translate="RMA Orders"
+                url.f="/my/rmas"
+                placeholder_count.f="rma_count"/>
         </xpath>
     </template>
     <template id="portal_my_rmas" name="My RMA Orders">
-        <t t-call="portal.portal_layout">
-            <t t-set="breadcrumbs_searchbar" t-value="True" />
-            <t t-call="portal.portal_searchbar">
-                <t t-set="title">RMA Orders</t>
-            </t>
+        <t t-call="portal.portal_layout" breadcrumbs_searchbar="True">
+            <t t-call="portal.portal_searchbar" title.translate="RMA Orders"/>
             <t t-if="rmas" t-call="portal.portal_table">
                 <thead>
                     <tr class="active">
@@ -59,7 +53,7 @@
                                     t-att-href="rma.get_portal_url()"
                                     t-att-title="rma.name"
                                 >
-                                    <t t-esc="rma.name" />
+                                    <t t-out="rma.name" />
                                 </a>
                             </td>
                             <td class="d-none d-md-table-cell">
@@ -67,7 +61,7 @@
                             </td>
                             <!-- Portal users don't have access to unpublished products -->
                             <td name="td_product">
-                                <span t-esc="rma.sudo().product_id.display_name" />
+                                <span t-out="rma.sudo().product_id.display_name" />
                             </td>
                             <td class='text-right'>
                                 <span t-field="rma.product_uom_qty" />
@@ -84,15 +78,11 @@
         </t>
     </template>
     <template id="portal_rma_page" name="My RMA">
-        <t t-call="portal.portal_layout">
-            <t t-set="o_portal_fullwidth_alert" groups="rma.rma_group_user_own">
-                <t t-call="portal.portal_back_in_edit_mode">
-                    <t
-                        t-set="backend_url"
-                        t-value="'/odoo/action-rma.rma_action/%s' % (rma.id)"
-                    />
-                </t>
-            </t>
+        <t t-set="o_portal_fullwidth_alert" groups="rma.rma_group_user_own">
+            <t t-call="portal.portal_back_in_edit_mode"
+                backend_url="'/odoo/action-rma.rma_action/%s' % (rma.id)"/>
+        </t>
+        <t t-call="portal.portal_layout" o_portal_fullwidth_alert="o_portal_fullwidth_alert">
             <h5 class="mb-0">
                 <span>
                     RMA Order -
@@ -117,7 +107,7 @@
                     <t t-foreach="tags" t-as="tag">
                         <span
                             class="badge badge-pill badge-info label-text-align"
-                            t-esc="tag.name"
+                            t-out="tag.name"
                         />
                     </t>
                     <t t-if="rma.state in ['refunded', 'returned', 'replaced']">
@@ -235,7 +225,7 @@
                                 <strong>Product</strong>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <span t-esc="rma.sudo().product_id.display_name" />
+                                <span t-out="rma.sudo().product_id.display_name" />
                             </div>
                         </div>
                         <div t-if="rma.product_uom_qty" class="row mb-2 mb-sm-1">
@@ -312,7 +302,7 @@
                             aria-label="Download"
                             title="Download"
                         />
-                        <span t-esc="picking.name" class="mr-lg-3" />
+                        <span t-out="picking.name" class="mr-lg-3" />
                         <div class="d-lg-inline-block">
                             Date:
                             <span class="text-muted" t-field="picking.date" />
@@ -369,7 +359,7 @@
                             aria-label="Download"
                             title="Download"
                         />
-                        <span t-esc="refund.name" class="mr-lg-3" />
+                        <span t-out="refund.name" class="mr-lg-3" />
                         <div class="d-lg-inline-block">
                             Date:
                             <span class="text-muted" t-field="refund.invoice_date" />
@@ -415,7 +405,7 @@
                                     aria-label="Download"
                                     title="Download"
                                 />
-                                <span t-esc="picking.name" class="mr-lg-3" />
+                                <span t-out="picking.name" class="mr-lg-3" />
                                 <div class="d-lg-inline-block">
                                     Date:
                                     <span class="text-muted" t-field="picking.date" />
@@ -459,12 +449,11 @@
             <!-- chatter -->
             <div id="rma_communication" class="mt-4">
                 <h2>Communication</h2>
-                <t t-call="portal.message_thread">
-                    <t t-set="object" t-value="rma" />
-                    <t t-set="token" t-value="rma.access_token" />
-                    <t t-set="pid" t-value="pid" />
-                    <t t-set="hash" t-value="hash" />
-                </t>
+                <t t-call="portal.message_thread"
+                    object="rma"
+                    token="rma.access_token"
+                    pid="pid"
+                    hash="hash"/>
             </div>
         </t>
     </template>

@@ -3,19 +3,18 @@
 
 {
     "name": "Product Warranty",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Generic Modules/Product",
     "author": "Akretion, Vauxoo, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/rma",
     "license": "AGPL-3",
     "depends": ["sale_management"],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/res_company_views.xml",
         "views/product_supplierinfo_views.xml",
         "views/product_template_views.xml",
-        "views/return_instructions_views.xml",
-    ],
+        "views/return_instructions_views.xml"],
     "demo": ["demo/product_warranty.xml", "demo/res_company.xml"],
     "images": ["images/product_warranty.png"],
     "development_status": "Production/Stable",

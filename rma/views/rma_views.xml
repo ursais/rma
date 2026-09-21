@@ -55,7 +55,7 @@
                 <filter
                     string="Late RMAs"
                     name="late_rma"
-                    domain="[('deadline', '&lt;', context_today().strftime('%Y-%m-%d')), ('state', 'not in', ['refunded', 'returned', 'replaced', 'locked', 'cancelled', 'finished'])]"
+                    domain="[('deadline', '&lt;', 'today'), ('state', 'not in', ['refunded', 'returned', 'replaced', 'locked', 'cancelled', 'finished'])]"
                     help="RMAs which deadline has passed"
                 />
                 <separator />

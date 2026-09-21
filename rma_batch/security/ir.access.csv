@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+rma_batch_rule_user_own,Personal RMA Batches,model_rma_batch,rma.rma_group_user_own,crud,"['|',('user_id','=',user.id),('user_id','=',False)]"
+rma_batch_rule_user_all,All RMA Batches,model_rma_batch,rma.rma_group_user_all,crud,"[(1,'=',1)]"
+rma_batch_rule_multi_company,RMA Batches multi-company,model_rma,,crud,"[('company_id', 'in', company_ids + [False])]"

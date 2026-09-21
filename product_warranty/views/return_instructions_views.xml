@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- return instructions tree view -->
+    <!-- return instructions list view -->
     <record id="product_return_instructions_tree_view" model="ir.ui.view">
         <field name="name">product.return.instructions.tree</field>
         <field name="model">return.instruction</field>
